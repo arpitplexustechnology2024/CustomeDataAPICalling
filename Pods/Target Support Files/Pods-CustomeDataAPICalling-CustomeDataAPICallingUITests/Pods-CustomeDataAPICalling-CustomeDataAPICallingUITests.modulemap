@@ -1,0 +1,6 @@
+framework module Pods_CustomeDataAPICalling_CustomeDataAPICallingUITests {
+  umbrella header "Pods-CustomeDataAPICalling-CustomeDataAPICallingUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

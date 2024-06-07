@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CustomeDataAPICalling_CustomeDataAPICallingUITests : NSObject
+@end
+@implementation PodsDummy_Pods_CustomeDataAPICalling_CustomeDataAPICallingUITests
+@end

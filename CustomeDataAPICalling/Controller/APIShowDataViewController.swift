@@ -12,6 +12,9 @@ import SDWebImage
 class APIShowDataViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var noInternetView: UIView!
+    @IBOutlet weak var retryButton: UIButton!
     
     var query: String?
     var items: [Item] = []
@@ -22,9 +25,34 @@ class APIShowDataViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.isHidden = true
+        noInternetView.isHidden = true
         if let query = query {
-            searchGitHubUsers(query: query)
+            if isConnectedToInternet() {
+                showLoaderAndFetchData(query: query)
+                // showAlert(title: "Internet", message: "Internet Connected")
+            } else {
+                showNoInternetView()
+            }
+        }
+    }
+    
+    @IBAction func retryButtonTapped(_ sender: UIButton) {
+        if isConnectedToInternet() {
+            noInternetView.isHidden = true
+            showLoaderAndFetchData(query: query!)
+        } else {
+            showAlert(title: "No Internet", message: "Please check your internet connection and try again.")
+        }
+    }
+    
+    func showLoaderAndFetchData(query: String) {
+        activityIndicator.startAnimating()
+        activityIndicator.style = .large
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.activityIndicator.stopAnimating()
+            self.tableView.isHidden = false
+            self.searchGitHubUsers(query: query)
         }
     }
     
@@ -35,6 +63,7 @@ class APIShowDataViewController: UIViewController {
         ]
         
         AF.request(url, method: .get, parameters: parameters).responseDecodable(of: Welcome.self) { response in
+            
             switch response.result {
             case .success(let searchResponse):
                 self.items = searchResponse.items
@@ -43,6 +72,22 @@ class APIShowDataViewController: UIViewController {
                 print("Error occurred: \(error)")
             }
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func isConnectedToInternet() -> Bool {
+        let networkManager = NetworkReachabilityManager()
+        return networkManager?.isReachable ?? false
+    }
+    
+    func showNoInternetView() {
+        noInternetView.isHidden = false
+        activityIndicator.stopAnimating()
     }
 }
 
