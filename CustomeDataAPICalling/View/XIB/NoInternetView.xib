@@ -23,6 +23,10 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_connection" translatesAutoresizingMaskIntoConstraints="NO" id="IOS-6A-kAF">
                     <rect key="frame" x="76" y="179" width="241" height="243"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="241" id="6yB-Ab-wNh"/>
+                        <constraint firstAttribute="height" constant="243" id="Efa-Ar-G26"/>
+                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet Connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyX-eb-ATe">
                     <rect key="frame" x="71.666666666666686" y="447" width="250" height="28"/>
@@ -56,12 +60,10 @@ UGxlYXNlIFR1cm4gT24gSW50ZXJuZXQD4oCoQ29ubmVjdGlvbg
                 <constraint firstItem="RyX-eb-ATe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4NQ-0Z-HEL"/>
                 <constraint firstItem="7d1-e8-eYz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4ql-2G-FRD"/>
                 <constraint firstItem="IOS-6A-kAF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="76" id="E13-St-4rc"/>
-                <constraint firstItem="IOS-6A-kAF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.613232" id="FAd-1L-73G"/>
                 <constraint firstItem="7d1-e8-eYz" firstAttribute="top" secondItem="RyX-eb-ATe" secondAttribute="bottom" constant="10" id="FKA-eA-f2Z"/>
                 <constraint firstItem="9AT-lE-uDB" firstAttribute="top" secondItem="7d1-e8-eYz" secondAttribute="bottom" constant="25" id="Wsv-iR-XCx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IOS-6A-kAF" secondAttribute="trailing" constant="76" id="Y26-GD-jJw"/>
                 <constraint firstItem="9AT-lE-uDB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vZu-8H-bv5"/>
-                <constraint firstItem="IOS-6A-kAF" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.285211" id="y2X-xx-WNq"/>
                 <constraint firstItem="RyX-eb-ATe" firstAttribute="top" secondItem="IOS-6A-kAF" secondAttribute="bottom" constant="25" id="yDG-cP-zV6"/>
             </constraints>
             <point key="canvasLocation" x="105" y="-11"/>
